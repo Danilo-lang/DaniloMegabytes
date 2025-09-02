@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danilo Megabytes</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* {box-sizing: border-box;margin:0;padding:0;}
+body {font-family:'Roboto',sans-serif;background:#f4f7f9;color:#333;display:flex;flex-direction:column;align-items:center;padding-bottom:50px;}
+header {background:#4CAF50;width:100%;padding:20px 0;text-align:center;color:white;box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+header h1 {font-size:26px;}
+.container {width:90%;max-width:900px;margin-top:30px;}
+h2 {text-align:center;margin-bottom:15px;color:#444;}
+h3 {margin:20px 0 10px 0;color:#333;text-align:center;}
+.cards {display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-bottom:30px;}
+.card {background:white;border-radius:10px;padding:15px 20px;box-shadow:0 4px 12px rgba(0,0,0,0.05);cursor:pointer;transition:0.3s;width:120px;text-align:center;}
+.card:hover {transform:scale(1.05);box-shadow:0 6px 15px rgba(0,0,0,0.15);}
+.card.selected {border:3px solid #25D366;}
+.card h3 {margin-bottom:5px;color:#333;font-size:16px;}
+.card p {font-size:14px;color:#555;margin:0;}
+.note {background:#fff3cd;border:1px solid #ffeeba;padding:15px;border-radius:8px;margin:20px 0;color:#856404;text-align:center;}
+form {background:white;padding:25px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.05);margin-top:20px;width:100%;max-width:500px;}
+form label {font-weight:bold;display:block;margin-top:15px;}
+input, textarea, button {width:100%;padding:12px;margin-top:8px;border-radius:6px;border:1px solid #ccc;font-size:16px;}
+button {margin-top:20px;background:linear-gradient(90deg,#25D366,#128C7E);color:white;font-size:18px;border:none;border-radius:8px;cursor:pointer;transition:0.3s;}
+button:hover {background:linear-gradient(90deg,#128C7E,#25D366);}
+.payment-section {background:#fff;padding:20px;border-radius:10px;margin:30px 0;box-shadow:0 4px 12px rgba(0,0,0,0.05);}
+.payment-section h2 {text-align:center;margin-bottom:20px;color:#333;}
+.payment-option {background:#f4f7f9;padding:15px;border-radius:8px;margin-bottom:10px;}
+.payment-option h3 {margin-bottom:5px;color:#444;}
+.payment-option p {margin:0;color:#555;font-weight:bold;}
+.payment-section .note {margin-top:15px;padding:10px;background:#fff3cd;border:1px solid #ffeeba;border-radius:8px;color:#856404;text-align:center;font-size:14px;}
+@media(max-width:600px){.card{width:45%;}.card h3{font-size:14px;}.card p{font-size:12px;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>💻 Danilo Megabytes</h1>
+</header>
+
+<div class="container">
+
+<h2>📅 Selecione seu pacote</h2>
+
+<!-- Pacotes Diários -->
+<h3>Pacotes Diários (24H)</h3>
+<div class="cards" id="dailyCards">
+    <div class="card" data-pacote="18MT - 1024MB"><h3>18MT</h3><p>1024MB</p></div>
+    <div class="card" data-pacote="20MT - 1100MB"><h3>20MT</h3><p>1100MB</p></div>
+    <div class="card" data-pacote="27MT - 1536MB"><h3>27MT</h3><p>1536MB</p></div>
+    <div class="card" data-pacote="30MT - 1612MB"><h3>30MT</h3><p>1612MB</p></div>
+    <div class="card" data-pacote="36MT - 2048MB"><h3>36MT</h3><p>2048MB</p></div>
+    <div class="card" data-pacote="40MT - 2200MB"><h3>40MT</h3><p>2200MB</p></div>
+    <div class="card" data-pacote="50MT - 2700MB"><h3>50MT</h3><p>2700MB</p></div>
+    <div class="card" data-pacote="54MT - 3072MB"><h3>54MT</h3><p>3072MB</p></div>
+    <div class="card" data-pacote="60MT - 3300MB"><h3>60MT</h3><p>3300MB</p></div>
+    <div class="card" data-pacote="72MT - 4096MB"><h3>72MT</h3><p>4096MB</p></div>
+    <div class="card" data-pacote="80MT - 4400MB"><h3>80MT</h3><p>4400MB</p></div>
+    <div class="card" data-pacote="90MT - 5120MB"><h3>90MT</h3><p>5120MB</p></div>
+    <div class="card" data-pacote="108MT - 6144MB"><h3>108MT</h3><p>6144MB</p></div>
+    <div class="card" data-pacote="130MT - 7250MB"><h3>130MT</h3><p>7250MB</p></div>
+    <div class="card" data-pacote="150MT - 8200MB"><h3>150MT</h3><p>8200MB</p></div>
+    <div class="card" data-pacote="180MT - 10240MB"><h3>180MT</h3><p>10240MB</p></div>
+</div>
+
+<!-- Pacotes Semanais -->
+<h3>Pacotes Semanais (7 Dias)</h3>
+<div class="cards" id="weeklyCards">
+    <div class="card" data-pacote="45MT - 1.7GB"><h3>45MT</h3><p>1.7GB</p></div>
+    <div class="card" data-pacote="80MT - 2.9GB"><h3>80MT</h3><p>2.9GB</p></div>
+    <div class="card" data-pacote="90MT - 3.4GB"><h3>90MT</h3><p>3.4GB</p></div>
+    <div class="card" data-pacote="145MT - 5.2GB"><h3>145MT</h3><p>5.2GB</p></div>
+    <div class="card" data-pacote="180MT - 7.1GB"><h3>180MT</h3><p>7.1GB</p></div>
+    <div class="card" data-pacote="280MT - 10.7GB"><h3>280MT</h3><p>10.7GB</p></div>
+    <div class="card" data-pacote="390MT - 14.3GB"><h3>390MT</h3><p>14.3GB</p></div>
+</div>
+
+<!-- Pacotes Mensais -->
+<h3>Pacotes Mensais (30 Dias)</h3>
+<div class="cards" id="monthlyCards">
+    <div class="card" data-pacote="90MT - 2.8GB"><h3>90MT</h3><p>2.8GB</p></div>
+    <div class="card" data-pacote="140MT - 5.0GB"><h3>140MT</h3><p>5.0GB</p></div>
+    <div class="card" data-pacote="160MT - 7.0GB"><h3>160MT</h3><p>7.0GB</p></div>
+    <div class="card" data-pacote="230MT - 10GB"><h3>230MT</h3><p>10GB</p></div>
+    <div class="card" data-pacote="430MT - 20GB"><h3>430MT</h3><p>20GB</p></div>
+    <div class="card" data-pacote="800MT - 40GB"><h3>800MT</h3><p>40GB</p></div>
+    <div class="card" data-pacote="1000MT - 60GB"><h3>1000MT</h3><p>60GB</p></div>
+</div>
+
+<div class="note">
+NB: Para os pacotes Mensais e Semanais não podes ter Txuna.<br>
+Após realizar a transferência, envie a mensagem de confirmação e o número a receber o pacote!
+</div>
+
+<!-- Seção Formas de Pagamento -->
+<div class="payment-section">
+  <h2>💳 Formas de Pagamento</h2>
+
+  <div class="payment-option">
+    <h3>🔴 M-PESA:</h3>
+    <p>844068903 - Danilo Roseiro</p>
+  </div>
+
+  <div class="payment-option">
+    <h3>🟠 E-MOLA:</h3>
+    <p>879468903 - Danilo Leonel</p>
+  </div>
+
+  <div class="payment-option">
+    <h3>🔵 Millennium Bim:</h3>
+    <p>1235532360 - Danilo Leonel</p>
+  </div>
+
+  <div class="note">
+    NB: Após realizar a transferência, por favor, envie a mensagem de confirmação e o número a receber o pacote!
+  </div>
+</div>
+
+<!-- Formulário de envio para WhatsApp -->
+<form id="purchaseForm">
+  <input type="hidden" id="selectedPackage" required>
+  
+  <label for="number">Número a receber os dados:</label>
+  <input type="text" id="number" placeholder="Ex: 84XXXXXXXX" required>
+  
+  <label for="confirmation">Mensagem de confirmação do pagamento:</label>
+  <textarea id="confirmation" placeholder="Ex: Confirmado CHU4H7M9FOU. Recebeste 20.00MT ..." required></textarea>
+  
+  <label for="paymentMethod">Selecione a forma de pagamento:</label>
+  <select id="paymentMethod" required>
+    <option value="">Selecione...</option>
+    <option value="M-PESA 🔴 844068903 - Danilo Roseiro">🔴 M-PESA</option>
+    <option value="E-MOLA 🟠 879468903 - Danilo Leonel">🟠 E-MOLA</option>
+    <option value="Millennium Bim 🔵 1235532360 - Danilo Leonel">🔵 Millennium Bim</option>
+  </select>
+  
+  <button type="submit">Enviar para WhatsApp</button>
+</form>
+
+</div>
+
+<script>
+// Seleção de pacotes
+let selectedPackage = null;
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    selectedPackage = card.getAttribute('data-pacote');
+    document.getElementById('selectedPackage').value = selectedPackage;
+  });
+});
+
+// Envio para WhatsApp
+const form = document.getElementById('purchaseForm');
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const pacote = document.getElementById('selectedPackage').value;
+  const numero = document.getElementById('number').value;
+  const confirmacao = document.getElementById('confirmation').value;
+  const pagamento = document.getElementById('paymentMethod').value;
+
+  if(!pacote || !numero || !confirmacao || !pagamento){
+    alert('Por favor, selecione um pacote, preencha todos os campos e escolha a forma de pagamento.');
+    return;
+  }
+
+  // Substitua pelo seu número do WhatsApp com código do país
+  const meuNumero = '258879468903';
+
+  // Mensagem organizada para WhatsApp
+  const mensagem = `📩 *Novo pedido de internet:*\n\n*Pacote:* ${pacote}\n*Número a receber:* ${numero}\n*Confirmação:* ${confirmacao}\n*Forma de Pagamento:* ${pagamento}`;
+
+  const linkWhatsApp = `https://wa.me/${meuNumero}?text=${encodeURIComponent(mensagem)}`;
+  window.open(linkWhatsApp, '_blank');
+});
+</script>
+
+</body>
+</html> 
